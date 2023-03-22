@@ -20,40 +20,40 @@ export function ShakaExample() {
   };
 
   const onButtonClick = () => {
-    const {
-      /** @type {shaka.Player} */ player,
-      /** @type {shaka.ui.Overlay} */ ui,
-      /** @type {HTMLVideoElement} */ videoElement,
-    } = controllerRef.current;
+    // const {
+    //   /** @type {shaka.Player} */ player,
+    //   /** @type {shaka.ui.Overlay} */ ui,
+    //   /** @type {HTMLVideoElement} */ videoElement,
+    // } = controllerRef.current;
 
-    player.configure({
-      cmcd: {
-        contentId: "testContentId",
-        enabled: true,
-        sessionId: "testSessionId",
-        useHeaders: false,
-      },
-    });
-    const networkEngine = player.getNetworkingEngine();
-    networkEngine.registerRequestFilter((type, request) => {
-      const newUris = [{}];
-      const urisToAdd = [...new Set(request.uris)];
-      for (const uri of urisToAdd) {
-        newUris.push({ url: uri, result: CMCDQueryValidator(uri) });
-      }
-      setNewData(newUris);
-    });
-    async function loadAsset() {
-      // Load an asset.
-      try {
-        await player.load(url);
-      } catch (error) {
-        console.log(error);
-      }
-      // Trigger play.
-      videoElement.play();
-    }
-    loadAsset();
+    // player.configure({
+    //   cmcd: {
+    //     contentId: "testContentId",
+    //     enabled: true,
+    //     sessionId: "testSessionId",
+    //     useHeaders: false,
+    //   },
+    // });
+    // const networkEngine = player.getNetworkingEngine();
+    // networkEngine.registerRequestFilter((type, request) => {
+    //   const newUris = [{}];
+    //   const urisToAdd = [...new Set(request.uris)];
+    //   for (const uri of urisToAdd) {
+    //     newUris.push({ url: uri, result: CMCDQueryValidator(uri) });
+    //   }
+    //   setNewData(newUris);
+    // });
+    // async function loadAsset() {
+    //   // Load an asset.
+    //   try {
+    //     await player.load(url);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    //   // Trigger play.
+    //   videoElement.play();
+    // }
+    // loadAsset();
   };
 
   return (
